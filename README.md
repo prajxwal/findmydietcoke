@@ -4,7 +4,7 @@ I could not find Diet Coke on Zepto. I have a computer science degree.
 
 ---
 
-## 🚀 Features
+##  Features
 
 * **Real-time Headless Scraping**: Spawns an entire invisible Chromium browser — a fully functional ghost computer inside your computer — to check if a beverage exists. The beverage costs ₹40. The electricity to run this probably costs more.
 
@@ -18,7 +18,7 @@ I could not find Diet Coke on Zepto. I have a computer science degree.
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 **Next.js 14, TypeScript, Playwright.**
 
@@ -26,7 +26,7 @@ I used a full-stack TypeScript framework with a headless browser automation engi
 
 ---
 
-## ⚙️ How It Works
+##  How It Works
 
 1. You type your address.
 2. A secret browser wakes up, opens Zepto, and navigates it like a haunted intern.
@@ -39,7 +39,7 @@ I used a full-stack TypeScript framework with a headless browser automation engi
 
 ---
 
-## 📝 Roadmap
+##  Roadmap
 
 - [ ] **Blinkit integration** — they also deliver in 10 minutes and also have a perfectly good app
 - [ ] **Swiggy Instamart integration** — same, all of these apps are fine, I just didn't use them
@@ -48,7 +48,7 @@ I used a full-stack TypeScript framework with a headless browser automation engi
 
 ---
 
-## 🪦 In Conclusion
+##  In Conclusion
 
 Zepto delivers Diet Coke in 10 minutes if it's in stock. This app tells you if it's in stock, slower than Zepto's own app would. The correct sequence of events was: open Zepto, check if Diet Coke is available, order it. The actual sequence of events was: spend multiple evenings writing a Playwright scraper, build a React dashboard with a terminal aesthetic, write this README, push it to GitHub.
 
