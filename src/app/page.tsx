@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <div className="box">
-      <div className="title">COKE ZERO TRACKER</div>
+      <div className="title">DIET COKE TRACKER</div>
       
       {!savedLocation ? (
          <div style={{ marginBottom: '2rem' }}>

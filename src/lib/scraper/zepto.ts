@@ -55,7 +55,7 @@ export async function checkZepto(userLocation: string): Promise<boolean> {
             const products = data?.data?.products || data?.data?.items || data?.storeProducts || [];
             if (products.some((p: any) => {
                 const name = (p.name || p.title || "").toLowerCase();
-                return name.includes("diet coke") || name.includes("coke zero") || name.includes("coca-cola zero");
+                return name.includes("diet coke");
             })) {
                 // @ts-ignore
                 window.dietCokeFound = true;
@@ -69,7 +69,7 @@ export async function checkZepto(userLocation: string): Promise<boolean> {
                 // @ts-ignore
                 input.focus();
                 // @ts-ignore
-                input.value = "coca cola zero";
+                input.value = "diet coke";
                 input.dispatchEvent(new Event("input", { bubbles: true }));
                 input.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
                 
@@ -88,7 +88,7 @@ export async function checkZepto(userLocation: string): Promise<boolean> {
     // Fallback: visual check
     if (!found) {
         const text = await page.evaluate(() => document.body.innerText).catch(() => "");
-        if (text.toLowerCase().includes("coca-cola zero") || text.toLowerCase().includes("coke zero")) found = true;
+        if (text.toLowerCase().includes("diet coke")) found = true;
     }
 
   } catch (error) {
