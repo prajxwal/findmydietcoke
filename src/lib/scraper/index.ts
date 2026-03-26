@@ -6,18 +6,17 @@ let lastUpdated: Record<string, number> = {};
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 let isScraping: Record<string, boolean> = {};
 
-export async function getStockStatus(location: string): Promise<StockData | { error: string }> {
-  if (!location) return { error: "Location required" };
-  
-  const locKey = location.toLowerCase().trim();
+export async function getStockStatus(lat: number, lng: number): Promise<StockData> {
+  // Round to 3 decimal places (~111m precision) for cache key
+  const locKey = `${lat.toFixed(3)},${lng.toFixed(3)}`;
   const now = Date.now();
-  
+
   const isStale = !cache[locKey] || (now - (lastUpdated[locKey] || 0) > CACHE_TTL);
 
   // Trigger scrape in background if stale and not already scraping
   if (isStale && !isScraping[locKey]) {
     isScraping[locKey] = true;
-    checkZepto(location).then(zepto => {
+    checkZepto(lat, lng).then(zepto => {
       cache[locKey] = {
         zepto: zepto ? "IN_STOCK" : "OUT_OF_STOCK",
         blinkit: "UNKNOWN",
@@ -32,8 +31,8 @@ export async function getStockStatus(location: string): Promise<StockData | { er
     });
   }
 
-  // Return cache immediately if we have one. If it's missing entirely (first run), return scanning state.
-  return cache[locKey] || { 
+  // Return immediately — scanning state if no cache yet
+  return cache[locKey] || {
     zepto: "SCANNING",
     blinkit: "UNKNOWN",
     instamart: "UNKNOWN",
